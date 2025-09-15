@@ -4,50 +4,51 @@
           <div :style="xs||sm?{'display':'none'}:{'font-size':'4rem'}" class="leleo-left-welcome">{{ configdata.welcometitle }}</div>
         </div>
         <div>
-          <v-row align="center">
+					<!-- 搜索栏模块 -->
+        	<v-row align="center">
             <v-col cols="12" md="8">
-				<v-text-field class="v-card"
-					:style="xs||sm?{'display':'none'}:{}"
-					v-model="searchQuery"
-					placeholder="搜索..."
-					variant="outlined"
-					rounded
-					hide-details="true"
-					@keyup.enter="performSearch"
-					>
-					<template v-slot:prepend-inner>
-						<v-menu>
-							<template v-slot:activator="{ props }">
-							<v-btn
-								variant="text"
-								v-bind="props"
-								class="engine-btn"
-							>
-								{{ selectedEngine.title }}
-								<v-icon icon="mdi-chevron-down"></v-icon>
-							</v-btn>
-							</template>
-							<v-list class="glass-list">
-								<v-list-item
-									v-for="engine in searchEngines"
-									:key="engine.value"
-									@click="selectedEngine = engine"
-									density="compact"
+							<v-text-field class="v-card"
+								:style="xs||sm?{'display':'none'}:{}"
+								v-model="searchQuery"
+								placeholder="搜索..."
+								variant="outlined"
+								rounded
+								hide-details="true"
+								@keyup.enter="performSearch"
 								>
-									{{ engine.title }}
-								</v-list-item>
-							</v-list>
-						</v-menu>
-					</template>
+								<template v-slot:prepend-inner>
+									<v-menu>
+										<template v-slot:activator="{ props }">
+										<v-btn
+											variant="text"
+											v-bind="props"
+											class="engine-btn"
+										>
+											{{ selectedEngine.title }}
+											<v-icon icon="mdi-chevron-down"></v-icon>
+										</v-btn>
+										</template>
+										<v-list class="glass-list">
+											<v-list-item
+												v-for="engine in searchEngines"
+												:key="engine.value"
+												@click="selectedEngine = engine"
+												density="compact"
+											>
+												{{ engine.title }}
+											</v-list-item>
+										</v-list>
+									</v-menu>
+								</template>
 
-					<template v-slot:append-inner>
-						<v-btn
-						:icon="isUrl ? 'mdi-earth' : 'mdi-magnify'"
-						variant="text"
-						@click="performSearch"
-						></v-btn>
-					</template>
-					</v-text-field>
+								<template v-slot:append-inner>
+									<v-btn
+									:icon="isUrl ? 'mdi-earth' : 'mdi-magnify'"
+									variant="text"
+									@click="performSearch"
+									></v-btn>
+								</template>
+								</v-text-field>
             	<typewriter class="ma-3 d-flex align-center justify-center" style="min-height: 200px;"></typewriter>
             </v-col>
             <v-col cols="12" md="4" align="center">
@@ -63,11 +64,11 @@
               </v-card>
             </v-col>
           </v-row>
-          
+          <!-- 文字模块 -->
           <v-chip class="mt-3 ml-3" prepend-icon="mdi-webhook"  size="large" style="color: var(--leleo-vcard-color);">
             历程
           </v-chip>
-					<!-- 最外层布局 -->
+					<!-- 卡片模块 -->
           <v-container>
 						<!-- 添加行容器 -->
             <v-row>
